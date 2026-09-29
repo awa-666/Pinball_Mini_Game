@@ -2,7 +2,7 @@
 #include<easyx.h>
 #include<conio.h>
 #include<math.h>
-#define Speed 5 / sqrt(2)
+#define Speed 5
 int main() {
 	while (1) {
 		char c;
@@ -26,6 +26,10 @@ int main() {
 			int dy = Speed;
 			while (1) {
 				cleardevice();
+				if (x <= -350 || x >= 350)
+					dx = -dx;
+				if (y <= -250 || y >= 250)
+					dy = -dy;
 				solidcircle(x, y, 50);
 				int c = 0;
 				if (_kbhit() != 0) {
