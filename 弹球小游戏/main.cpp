@@ -25,16 +25,37 @@ int main() {
 			int dx = Speed;
 			int dy = Speed;
 			while (1) {
+				if (y < -300) {				//重置时随机位置
+					x = rand() % 401 - 200;
+					y = rand() % 301 - 150;
+					int j;
+					j = rand() % 4 + 1;
+					switch (j) {			//重置时随机方向
+						case 1:
+							dx = Speed;
+							dy = Speed;
+							break;
+						case 2:
+							dx = Speed;
+							dy = -Speed;
+							break;
+						case 3:
+							dx = -Speed;
+							dy = Speed;
+							break;
+						case 4:
+							dx = -Speed;
+							dy = -Speed;
+					}
+				}
 				cleardevice();
-				if (x <= -350 && num > 5 || x >= 350 && num > 5) {
+				if (x <= -350 || x >= 350){
 					dx = -dx;
-					num = 0;
 				}
-				if (y >= 250 && num > 5) {
+				if (y >= 250) {
 					dy = -dy;
-					num = 0;
 				}
-				if (x >= k - 150 && x <= k + 150 && y <= -230 && num > 5) {
+				if (x >= k - 150 && x <= k + 150 && y <= -230 && num > 12) {
 					dy = -dy;
 					num = 0;
 				}
