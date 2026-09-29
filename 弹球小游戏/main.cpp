@@ -1,14 +1,8 @@
 #include<stdio.h>
 #include<easyx.h>
 #include<conio.h>
-//绘制挡板函数
-void board(int x){
-	if (x < -250)
-		x = -250;
-	if (x > 250)
-		x = 250;
-	solidrectangle(x - 150, -280, x + 150, 280);
-}
+#include<math.h>
+#define Speed 5 / sqrt(2)
 int main() {
 	while (1) {
 		char c;
@@ -27,8 +21,33 @@ int main() {
 		c = getchar();
 		getchar();		//吸收换行符
 		if (c == '1') {
-			printf("游戏没结束！\n");
-			getchar();
+			int x = 0, y = 0, k=0;
+			int dx = Speed;
+			int dy = Speed;
+			while (1) {
+				cleardevice();
+				solidcircle(x, y, 50);
+				int c = 0;
+				if (_kbhit() != 0) {
+					c = _getch();
+					switch (c) {
+						case 'a':
+							k -= 15;
+							break;
+						case 'd':
+							k += 15;
+					}
+				}
+				if (k < -250)
+					k = -250;
+				if (k > 250)
+					k = 250;
+				solidrectangle(k - 150, -280, k + 150, -300);
+
+				x += dx;
+				y += dy;
+				Sleep(40);		//动画为25帧
+			}
 		}
 		else {
 			printf("游戏结束！\n");
