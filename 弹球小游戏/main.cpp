@@ -21,15 +21,24 @@ int main() {
 		c = getchar();
 		getchar();		//ÎüÊÕ»»ÐÐ·û
 		if (c == '1') {
-			int x = 0, y = 0, k=0;
+			int x = 0, y = 0, k = 0,num = 0;
 			int dx = Speed;
 			int dy = Speed;
 			while (1) {
 				cleardevice();
-				if (x <= -350 || x >= 350)
+				if (x <= -350 && num > 5 || x >= 350 && num > 5) {
 					dx = -dx;
-				if (y <= -250 || y >= 250)
+					num = 0;
+				}
+				if (y >= 250 && num > 5) {
 					dy = -dy;
+					num = 0;
+				}
+				if (x >= k - 150 && x <= k + 150 && y <= -230 && num > 5) {
+					dy = -dy;
+					num = 0;
+				}
+				num++;
 				solidcircle(x, y, 50);
 				int c = 0;
 				if (_kbhit() != 0) {
