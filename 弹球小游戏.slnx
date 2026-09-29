@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="弹球小游戏/弹球小游戏.vcxproj" />
+  <Project Path="弹球小游戏/弹球小游戏.vcxproj" Id="8e6c14aa-ccc2-4cda-a9de-3ef9faf3f672" />
 </Solution>
